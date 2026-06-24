@@ -74,9 +74,9 @@ if os.path.exists(music_folder):
     playlist_paths = [
         os.path.join(music_folder, f) 
         for f in os.listdir(music_folder) 
-        if f.lower().endswith(('.ogg', '.mp3', '.wav'))
+        if f.lower().endswith(('.ogg'))
     ]
-    playlist_paths.sort()
+    
 
     # 🌟 NEW: Pre-cache ALL songs on startup to eliminate mid-game disk lag!
     print("⏳ Pre-loading soundtrack into memory...")
@@ -95,6 +95,7 @@ def reshuffle_playlist():
         return
     shuffled_playlist = playlist_paths.copy()
     random.shuffle(shuffled_playlist)
+    current_track_index = 0  # Reset index back to 0 whenever we shuffle
     print("🔀 Playlist shuffled and renewed!")
 
 # Initialize the shuffle order on startup
